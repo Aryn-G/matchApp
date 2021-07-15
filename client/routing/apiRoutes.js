@@ -1,4 +1,4 @@
-var usersArr = require("../data/user");
+var usersArr = require("../data/users");
 
 module.exports = function (app) {
   app.get("/api/users", function (req, res) {
