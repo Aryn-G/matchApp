@@ -1,0 +1,267 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      @import url("https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;500;600;700;800;900&display=swap");
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+        font-family: "Poppins", sans-serif;
+      }
+      section {
+        display: flex;
+        position: relative;
+        justify-content: center;
+        align-items: center;
+        min-height: 100vh;
+        background-image: url(https://i.pinimg.com/originals/d5/a4/dc/d5a4dc1ffc195ff1fa2b6664179f0053.jpg);
+      }
+      section .container {
+        position: relative;
+        min-width: 1100px;
+        min-height: 550px;
+        display: flex;
+        z-index: 1000;
+      }
+      section .container .contact-form {
+        overflow-y: scroll;
+        display: flex;
+        flex-direction: column;
+        position: absolute;
+        padding: 70px 50px;
+        backdrop-filter: blur(1rem);
+        /* background: white; */
+        width: calc(100% - 150px);
+        height: 100%;
+        box-shadow: 0 50px 50px rgba(0, 0, 0, 0.5);
+      }
+      section .container .contact-form h2 {
+        justify-self: center;
+        text-align: center;
+        margin-bottom: 25px;
+        color: white;
+        font-size: 24px;
+        font-weight: 500;
+      }
+      section .container .contact-form .form-box {
+        position: relative;
+        display: flex;
+        justify-content: space-between;
+        flex-wrap: wrap;
+        padding-top: 30px;
+      }
+      section .container .contact-form .form-box .input-box {
+        position: relative;
+        margin: 0 0 50px 0;
+      }
+      section .container .contact-form .form-box .input-box.w50 {
+        width: 47%;
+      }
+      section .container .contact-form .form-box .input-box.w100 {
+        width: 100%;
+      }
+      section .container .contact-form .form-box .input-box input {
+        background: none;
+        width: 100%;
+        padding: 5px 0;
+        font-size: 18px;
+        font-weight: 300;
+        color: #fff;
+        border: none;
+        border-bottom: 1px solid #777;
+        outline: none;
+      }
+
+      section .container .contact-form .form-box .range-box {
+        flex-direction: column;
+        align-items: center;
+        display: flex;
+        position: relative;
+        margin: 0 0 50px 0;
+      }
+      section .container .contact-form .form-box .range-box.w100 {
+        width: 100%;
+      }
+      section .container .contact-form .form-box .range-box input {
+        background: none;
+        width: 90%;
+        padding: 5px 0;
+        font-size: 18px;
+        font-weight: 300;
+        color: #333;
+        border: none;
+        border-bottom: 1px solid #777;
+        outline: none;
+      }
+      section .container .contact-form .form-box .range-box span {
+        position: absolute;
+        top: -35px;
+        left: 0;
+        padding: 5px 0;
+        font-size: 18px;
+        font-weight: 300;
+        color: white;
+        transition: 0.3s;
+        pointer-events: none;
+        z-index: 5;
+      }
+      section .container .contact-form .form-box .range-box .cont {
+        margin-top: 15px;
+        display: flex;
+        width: 90%;
+        height: 20px;
+        flex-direction: row;
+        justify-content: space-between;
+      }
+
+      section .container .contact-form .form-box .range-box .cont p {
+        position: relative;
+        padding: 5px 0;
+        font-size: 12px;
+        font-weight: 300;
+        color: white;
+        transition: 0.3s;
+        pointer-events: none;
+        z-index: 5;
+      }
+
+      section .container .contact-form .form-box .input-box span {
+        position: absolute;
+        left: 0;
+        padding: 5px 0;
+        font-size: 18px;
+        font-weight: 300;
+        color: white;
+        transition: 0.3s;
+        pointer-events: none;
+        z-index: 5;
+      }
+      section .container .contact-form .form-box .input-box input:focus ~ span,
+      section .container .contact-form .form-box .input-box input:valid ~ span {
+        transform: translateY(-20px);
+        font-size: 12px;
+        font-weight: 400px;
+        letter-spacing: 1px;
+        color: #ff568c;
+      }
+      section .container .contact-form .form-box .input-box #sub {
+        transition: 0.3s;
+        position: relative;
+        cursor: pointer;
+        text-align: center;
+        width: 100%;
+        background: #ff568c;
+        color: white;
+        border: none;
+        padding: 12px;
+      }
+      section .container .contact-form .form-box .input-box #sub:hover {
+        background: #b92353;
+      }
+      section .container .contact-form .form-box .input-box #sub:active {
+        transition: none;
+        background: #ffc3d6;
+      }
+      form {
+        width: 100%;
+      }
+      .slider {
+        -webkit-appearance: none;
+        width: 100%;
+        height: 25px;
+        outline: none;
+        -webkit-transition: 0.2s;
+        transition: 0.2s;
+      }
+
+      .slider:hover {
+        opacity: 1;
+      }
+
+      .slider::-webkit-slider-thumb {
+        position: relative;
+        bottom: -12.5px;
+        transition: 0.1s;
+        border-radius: 1rem;
+        -webkit-appearance: none;
+        appearance: none;
+        width: 25px;
+        height: 25px;
+        background: #ff568c;
+        cursor: pointer;
+      }
+
+      .slider::-moz-range-thumb {
+        width: 25px;
+        height: 25px;
+        background: #04aa6d;
+        cursor: pointer;
+      }
+    </style>
+    <script
+      src="https://code.jquery.com/jquery-3.6.0.min.js"
+      integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4="
+      crossorigin="anonymous"
+    ></script>
+  </head>
+  <body>
+    <section>
+      <div class="container">
+        <div class="contact-form">
+          <h2>Reserver a table</h2>
+          <div class="form-box">
+            <form method="POST">
+              <div class="input-box w100">
+                <input
+                  id="user-name"
+                  type="text"
+                  name="name"
+                  autocomplete="name"
+                  required
+                />
+                <span>Full Name</span>
+              </div>
+              <div class="qs"></div>
+              <div class="input-box w100">
+                <button id="sub" type="submit">Submit</button>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </section>
+    <script>
+      $(document).ready(function () {
+        let qs = 0;
+        $.get("/api/ques", function (data) {
+          for (let i = 0; i < data.length; i++) {
+            let question = `<div class="range-box w100 q${i}"><input type="range" min="1" max="5" value="3" class="slider" /><span>${data[i]}</span><div class="cont"><p style="left: -40px">Strongly Disagree</p><p style="left: -45px">Disagree</p><p style="left: -18px">Neutral</p><p style="left: 18px">Agree</p><p style="left: 35px">Strongly Agree</p></div></div>`;
+            qs++;
+            $(".qs").append(question);
+          }
+        });
+
+        $("#sub").on("click", function () {
+          const userName = $("#user-name");
+
+          let allScores = [];
+          for (let i = 0; i < qs; i++) {
+            const score = document.getElementsByClassName(`q${i}`).value;
+            allScores.push(element);
+          }
+
+          const dat = {
+            name: userName,
+            score: allScores,
+          };
+          $.post("/api/users/", dat)
+        });
+      });
+    </script>
+  </body>
+</html>

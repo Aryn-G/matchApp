@@ -1,4 +1,5 @@
 var usersArr = require("../data/users");
+var qArr = require("../data/question");
 
 module.exports = function (app) {
   app.get("/api/users", function (req, res) {
@@ -6,11 +7,18 @@ module.exports = function (app) {
   });
 
   app.post("/api/users", function (req, res) {
-    usersArr.push(req.body);
-    res.json(true);
+    var newUser = req.body;
+
+    usersArr.push(newUser);
+  
+    res.json(newUser);
   });
 
-  app.post("/api/clear", function (req, res) {
+  app.get("/api/ques", function (req, res) {
+    res.json(qArr);
+  });
+
+  app.post("/api/users/clear", function (req, res) {
     usersArr.length = [];
 
     res.json(usersArr);
