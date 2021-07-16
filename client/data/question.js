@@ -3,12 +3,12 @@ let question = [
   "Do you like pizza?",
   "Do you like Ice Cream",
   "Do you like Pixar Movies?",
-  "Do you 5",
-  "Do you 6",
-  "Do you 7",
-  "Do you 8",
-  "Do you 9",
-  "Do you 10",
+  "Is playing a game is fun only when you win?",
+  "Summer is the best season of the year",
+  "Decisions that people make quickly are always wrong",
+  "When people succeed, it's because of hard work. Luck has nothing to do with success",
+  "In the future all business will be online",
+  "Every kid should read at least one book every month",
 ];
 
 module.exports = question;
