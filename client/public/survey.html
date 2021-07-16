@@ -161,11 +161,11 @@
         padding: 12px;
       }
       section .container .contact-form .form-box .input-box #sub:hover {
-        background: #b92353;
+        background: #f33a75;
       }
       section .container .contact-form .form-box .input-box #sub:active {
         transition: none;
-        background: #ffc3d6;
+        background: #e02862;
       }
       form {
         width: 100%;
@@ -188,6 +188,8 @@
         bottom: -12.5px;
         transition: 0.1s;
         border-radius: 1rem;
+        border-bottom-right-radius: 0;
+        transform: rotate(45deg);
         -webkit-appearance: none;
         appearance: none;
         width: 25px;
@@ -196,11 +198,47 @@
         cursor: pointer;
       }
 
+      .slider::-webkit-slider-thumb:hover {
+        background: #f33a75;
+      }
+      .slider::-webkit-slider-thumb:active {
+        background: #e02862;
+      }
+
       .slider::-moz-range-thumb {
         width: 25px;
         height: 25px;
-        background: #04aa6d;
+        background: #ff568c;
         cursor: pointer;
+      }
+      .slider::-moz-range-thumb:hover {
+        background: #f33a75;
+      }
+      .slider::-moz-range-thumb:active {
+        background: #e02862;
+      }
+
+      ::-webkit-scrollbar {
+        width: 10px;
+      }
+
+      /* Track */
+      ::-webkit-scrollbar-track {
+        background: #ffffff36;
+      }
+
+      /* Handle */
+      ::-webkit-scrollbar-thumb {
+        transition: 0.3s;
+        background: #ff568c;
+      }
+
+      /* Handle on hover */
+      ::-webkit-scrollbar-thumb:hover {
+        background: #f33a75;
+      }
+      ::-webkit-scrollbar-thumb:active {
+        background: #e02862;
       }
     </style>
     <script
@@ -240,26 +278,29 @@
         let qs = 0;
         $.get("/api/ques", function (data) {
           for (let i = 0; i < data.length; i++) {
-            let question = `<div class="range-box w100 q${i}"><input type="range" min="1" max="5" value="3" class="slider" /><span>${data[i]}</span><div class="cont"><p style="left: -40px">Strongly Disagree</p><p style="left: -45px">Disagree</p><p style="left: -18px">Neutral</p><p style="left: 18px">Agree</p><p style="left: 35px">Strongly Agree</p></div></div>`;
+            let question = `<div class="range-box w100"><input id='q${i}' type="range" min="1" max="5" value="3" class="slider" /><span>${data[i]}</span><div class="cont"><p style="left: -40px">Strongly Disagree</p><p style="left: -45px">Disagree</p><p style="left: -18px">Neutral</p><p style="left: 18px">Agree</p><p style="left: 35px">Strongly Agree</p></div></div>`;
             qs++;
             $(".qs").append(question);
           }
         });
 
-        $("#sub").on("click", function () {
+        $("#sub").on("click", function (e) {
+          e.preventDefault();
           const userName = $("#user-name");
 
           let allScores = [];
           for (let i = 0; i < qs; i++) {
-            const score = document.getElementsByClassName(`q${i}`).value;
-            allScores.push(element);
+            const score = document.getElementById(`q${i}`).value;
+            // allScores.push(score);
           }
 
           const dat = {
             name: userName,
             score: allScores,
           };
-          $.post("/api/users/", dat)
+          $.post("/api/users/", dat, function (data) {
+            console.log("yes")
+          });
         });
       });
     </script>
