@@ -19,7 +19,8 @@ module.exports = function (app) {
   });
 
   app.post("/api/users/clear", function (req, res) {
-    usersArr = [
+    usersArr.length = [];
+    usersArr.push(
       {
         name: "BobGamer6",
         image:
@@ -31,8 +32,8 @@ module.exports = function (app) {
         image:
           "https://upload.wikimedia.org/wikipedia/en/b/bb/Male_Bathroom_Symbol.png",
         score: [5, 5, 5, 5, 5, 5, 2, 5, 2, 5],
-      },
-    ];
+      }
+    );
 
     res.json(usersArr);
   });
