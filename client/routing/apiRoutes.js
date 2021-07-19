@@ -10,7 +10,7 @@ module.exports = function (app) {
     var newUser = req.body;
 
     usersArr.push(newUser);
-  
+
     res.json(newUser);
   });
 
@@ -19,7 +19,20 @@ module.exports = function (app) {
   });
 
   app.post("/api/users/clear", function (req, res) {
-    usersArr.length = [];
+    usersArr = [
+      {
+        name: "BobGamer6",
+        image:
+          "https://upload.wikimedia.org/wikipedia/en/b/bb/Male_Bathroom_Symbol.png",
+        score: [1, 5, 2, 3, 4, 3, 2, 5, 2, 5],
+      },
+      {
+        name: "Mr Ia",
+        image:
+          "https://upload.wikimedia.org/wikipedia/en/b/bb/Male_Bathroom_Symbol.png",
+        score: [5, 5, 5, 5, 5, 5, 2, 5, 2, 5],
+      },
+    ];
 
     res.json(usersArr);
   });
